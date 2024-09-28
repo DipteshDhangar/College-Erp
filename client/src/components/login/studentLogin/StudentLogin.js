@@ -105,6 +105,12 @@ const StudentLogin = () => {
             className="w-32 hover:scale-105 transition-all duration-150 rounded-lg flex items-center justify-center text-white text-base py-1 bg-[#04bd7d]">
             Login
           </button>
+          <button
+            type="submit"
+            className="w-32 hover:scale-105 transition-all duration-150 rounded-lg flex items-center justify-center text-black text-base py-1 bg-white">
+              <img src="/download.png" alt="" width="30px" className="mr-2"/>
+            Google
+          </button>
           {loading && (
             <Spinner
               message="Logging In"
