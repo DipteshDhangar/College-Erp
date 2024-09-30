@@ -28,11 +28,17 @@ const AdminLogin = () => {
     }
   }, [store.errors]);
 
+
   const login = (e) => {
     e.preventDefault();
     setLoading(true);
     dispatch(adminSignIn({ username: username, password: password }, navigate));
   };
+
+  const loginwithgoogle = ()=>{
+    window.open("http://localhost:5001/auth/google","_self")
+  }
+  
 
   useEffect(() => {
     if (store.errors) {
@@ -104,7 +110,8 @@ const AdminLogin = () => {
             Login
           </button>
           <button
-            type="submit"
+            type="button"
+            onClick={loginwithgoogle}
             className="w-32 hover:scale-105 transition-all duration-150 rounded-lg flex items-center justify-center text-black text-base py-1 bg-white">
               <img src="/download.png" alt="" width="30px" className="mr-2"/>
             Google
