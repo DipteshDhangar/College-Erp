@@ -42,7 +42,7 @@ router.post("/adddepartment", auth, addDepartment);
 router.post("/addfaculty", auth, addFaculty);
 router.post("/getfaculty", auth, getFaculty);
 router.post("/addsubject", auth, addSubject);
-router.post("/getsubject", auth, getSubject);
+router.get("/getsubject", auth, getSubject);
 router.post("/addstudent", auth, addStudent);
 router.post("/getstudent", auth, getStudent);
 router.post("/getnotice", auth, getNotice);
