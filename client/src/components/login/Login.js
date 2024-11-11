@@ -15,7 +15,7 @@ const Login = () => {
           <h1>MADHAV INSTITUTE OF TECHNOLOGY & SCIENCE, GWALIOR(M.P.), INDIA </h1>
         </div>
         <div className="grid grid-cols-2 gap-28">
-          <div className="h-96 w-96 space-y-11 shadow-2xl flex flex-col justify-center items-center bg-transparent backdrop-blur-md bg-[#5a51d6] bg-opacity-60 rounded-xl">
+          <div className="h-96 w-96 space-y-11 shadow-2xl flex flex-col justify-center items-center bg-transparent backdrop-blur-md bg-[#2a2dff] bg-opacity-60 rounded-xl">
             <h1 className="text-4xl font-extrabold">Faculty</h1>
 
             <Link
@@ -25,7 +25,7 @@ const Login = () => {
               Login
             </Link>
           </div>
-          <div className="h-96 w-96 space-y-11 shadow-2xl flex flex-col justify-center items-center bg-transparent backdrop-blur-md bg-[#d65158] bg-opacity-60 rounded-xl">
+          <div className="h-96 w-96 space-y-11 shadow-2xl flex flex-col justify-center items-center bg-transparent backdrop-blur-md bg-[#e82831] bg-opacity-60 rounded-xl">
             <h1 className="text-4xl font-extrabold">Student</h1>
             <Link
               type="button"

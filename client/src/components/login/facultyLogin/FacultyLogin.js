@@ -49,7 +49,7 @@ const FacultyLogin = () => {
     }
   }, [store.errors]);
   return (
-    <div className="bg-[#5a51d6] h-screen w-screen flex items-center justify-center">
+    <div className="bg-[#62c0d1] h-screen w-screen flex items-center justify-center">
       <div className="grid grid-cols-2">
         <div
           className={`h-96 w-96 bg-white flex items-center justify-center ${
