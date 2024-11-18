@@ -226,7 +226,7 @@ export const markAttendance = async (req, res) => {
   try {
     const { selectedStudents, subjectName, department, year, section } =
       req.body;
-
+    console.log(selectedStudents, subjectName, department, year, section);
     const sub = await Subject.findOne({ subjectName });
 
     const allStudents = await Student.find({ department, year, section });
@@ -271,6 +271,6 @@ export const markAttendance = async (req, res) => {
   } catch (error) {
     const errors = { backendError: String };
     errors.backendError = error;
-    res.status(500).json(errors);
+    res.status(500).json(errors.message);
   }
 };
