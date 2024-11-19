@@ -17,16 +17,16 @@ export const facultyLogin = async (req, res) => {
       return res.status(404).json(errors);
     }
     //If password is provided, check it
-    if(password){
-    const isPasswordCorrect = await bcrypt.compare(
-      password,
-      existingFaculty.password
-    );
-    if (!isPasswordCorrect) {
-      errors.passwordError = "Invalid Credentials";
-      return res.status(404).json(errors);
+    if (password) {
+      const isPasswordCorrect = await bcrypt.compare(
+        password,
+        existingFaculty.password
+      );
+      if (!isPasswordCorrect) {
+        errors.passwordError = "Invalid Credentials";
+        return res.status(404).json(errors);
+      }
     }
-  }
 
     const token = jwt.sign(
       {
@@ -40,7 +40,7 @@ export const facultyLogin = async (req, res) => {
     res.status(200).json({ result: existingFaculty, token: token });
   } catch (error) {
     console.log(error);
-    res.status(500).json({message: "Something went wrong"});
+    res.status(500).json({ message: "Something went wrong" });
   }
 };
 
@@ -224,22 +224,27 @@ export const uploadMarks = async (req, res) => {
 
 export const markAttendance = async (req, res) => {
   try {
-    const { selectedStudents, subjectName, department, year, section } =
-      req.body;
-    console.log(selectedStudents, subjectName, department, year, section);
-    const sub = await Subject.findOne({ subjectName });
+    const { selectedStudents, department, year, section } = req.body;
+
+    console.log("selectedStudents", selectedStudents);
+    console.log("department", department);
+    console.log("year", year);
+    console.log("section", section);
+
+    // Hardcoded subject ID for testing
+    const subjectId = "673b584ad3b394a16f39a038"; // Replace with your subject ID
 
     const allStudents = await Student.find({ department, year, section });
 
     for (let i = 0; i < allStudents.length; i++) {
       const pre = await Attendence.findOne({
         student: allStudents[i]._id,
-        subject: sub._id,
+        subject: subjectId,
       });
       if (!pre) {
         const attendence = new Attendence({
           student: allStudents[i]._id,
-          subject: sub._id,
+          subject: subjectId,
         });
         attendence.totalLecturesByFaculty += 1;
         await attendence.save();
@@ -249,15 +254,15 @@ export const markAttendance = async (req, res) => {
       }
     }
 
-    for (var a = 0; a < selectedStudents.length; a++) {
+    for (let a = 0; a < selectedStudents.length; a++) {
       const pre = await Attendence.findOne({
         student: selectedStudents[a],
-        subject: sub._id,
+        subject: subjectId,
       });
       if (!pre) {
         const attendence = new Attendence({
           student: selectedStudents[a],
-          subject: sub._id,
+          subject: subjectId,
         });
 
         attendence.lectureAttended += 1;
@@ -267,10 +272,20 @@ export const markAttendance = async (req, res) => {
         await pre.save();
       }
     }
+
     res.status(200).json({ message: "Attendance Marked successfully" });
   } catch (error) {
-    const errors = { backendError: String };
-    errors.backendError = error;
-    res.status(500).json(errors.message);
+    console.error(error);
+    res.status(500).json({ message: error.message });
+  }
+};
+
+export const getAllSubject = async (req, res) => {
+  try {
+    const subjects = await Subject.find({});
+    res.status(200).json(subjects);
+  } catch (error) {
+    res.status(500).json(error);
+    console.log(error);
   }
 };

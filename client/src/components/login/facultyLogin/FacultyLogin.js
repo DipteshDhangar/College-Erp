@@ -37,9 +37,9 @@ const FacultyLogin = () => {
     );
   };
 
-  const loginwithgoogle = ()=>{
-    window.open("http://localhost:5001/auth/google","_self")
-  }
+  const loginwithgoogle = () => {
+    window.open("http://localhost:5001/auth/google", "_self");
+  };
 
   useEffect(() => {
     if (store.errors) {
@@ -54,7 +54,8 @@ const FacultyLogin = () => {
         <div
           className={`h-96 w-96 bg-white flex items-center justify-center ${
             translate ? "translate-x-[12rem]" : ""
-          }  duration-1000 transition-all rounded-3xl shadow-2xl`}>
+          }  duration-1000 transition-all rounded-3xl shadow-2xl`}
+        >
           <h1 className="text-[3rem]  font-bold text-center">
             Faculty
             <br />
@@ -67,7 +68,8 @@ const FacultyLogin = () => {
             loading ? "h-[27rem]" : "h-96"
           } w-96 bg-[#2c2f35] flex flex-col items-center justify-center ${
             translate ? "-translate-x-[12rem]" : ""
-          }  duration-1000 transition-all space-y-6 rounded-3xl shadow-2xl`}>
+          }  duration-1000 transition-all space-y-6 rounded-3xl shadow-2xl`}
+        >
           <h1 className="text-white text-3xl font-semibold">Faculty</h1>
           <div className="space-y-1">
             <p className="text-[#515966] font-bold text-sm">Username</p>
@@ -107,16 +109,11 @@ const FacultyLogin = () => {
           </div>
           <button
             type="submit"
-            className="w-32 hover:scale-105 transition-all duration-150 rounded-lg flex items-center justify-center text-white text-base py-1 bg-[#04bd7d]">
+            className="w-32 hover:scale-105 transition-all duration-150 rounded-lg flex items-center justify-center text-white text-base py-1 bg-[#04bd7d]"
+          >
             Login
           </button>
-          <button
-            type="submit"
-            onClick={loginwithgoogle}
-            className="w-32 hover:scale-105 transition-all duration-150 rounded-lg flex items-center justify-center text-black text-base py-1 bg-white">
-              <img src="/download.png" alt="" width="30px" className="mr-2"/>
-            Google
-          </button>
+
           {loading && (
             <Spinner
               message="Logging In"

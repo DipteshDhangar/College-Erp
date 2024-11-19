@@ -10,6 +10,7 @@ import {
   markAttendance,
 } from "../controller/facultyController.js";
 import auth from "../middleware/auth.js";
+import { getAllSubject } from "../controller/adminController.js";
 
 const router = express.Router();
 
@@ -21,5 +22,6 @@ router.post("/gettest", auth, getTest);
 router.post("/getstudent", auth, getStudent);
 router.post("/uploadmarks", auth, uploadMarks);
 router.post("/markattendance", auth, markAttendance);
+router.get("/getAllSubject", getAllSubject);
 
 export default router;
